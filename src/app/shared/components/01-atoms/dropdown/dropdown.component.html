@@ -1,0 +1,16 @@
+<div [class]="generateDropdownClasses()">
+  <shared-button [modifiers]="generateBtnModifiers()" (onClick)="toggleDropdown()">
+    <ng-icon btnContent *ngIf="dropdownContent.icon" [name]="dropdownContent.icon" size="24"></ng-icon>
+    <span *ngIf="dropdownContent.label" btnContent class="b-sm-semibold">{{ dropdownContent.label }}</span>
+    <ng-icon btnContent *ngIf="!modifiers.includes('datatable')" name="heroChevronDown" size="24"></ng-icon>
+  </shared-button>
+
+  <div class="dropdown__content absolute bg-white shadow-sm border-2 border-primary-100 rounded-lg flex flex-col items-start z-10 mt-4" [ngClass]="{'hidden': !dropdownIsOpen}">
+    <div *ngFor="let item of dropdownContent.options" class="dropdown__item py-1 w-full">
+      <a *ngIf="item.url" [routerLink]="item.url" (click)="toggleDropdown()" class="dropdown__link whitespace-nowrap">{{ item.label }}</a>
+      <shared-button *ngIf="item.id" class="dropdown__link whitespace-nowrap" (click)="btnClickFN(item.id)" [modifiers]="['no-style']">
+        <span btnContent>{{ item.label }}</span>
+      </shared-button>
+    </div>
+  </div>
+</div>

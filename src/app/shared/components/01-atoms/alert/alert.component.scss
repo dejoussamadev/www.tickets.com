@@ -1,0 +1,47 @@
+.alert {
+  $self: &;
+
+  @apply bg-gray-100 rounded-md flex overflow-hidden;
+
+  &__icon {
+    @apply px-8 flex items-center justify-center bg-gray-300;
+    &::after {
+      @apply content-[''];
+    }
+  }
+
+  &__content {
+    @apply b-sm text-gray-600 p-8;
+  }
+
+  // Info
+  &--info {
+    #{$self} {
+      &__icon {
+        @apply bg-indigo-600 text-white;
+      }
+    }
+  }
+
+  // Warning
+  &--warning {
+    @apply bg-yellow-200;
+
+    #{$self} {
+      &__icon {
+        @apply bg-yellow-800 text-white;
+      }
+    }
+  }
+
+  // Danger
+  &--danger {
+    @apply bg-red-200;
+
+    #{$self} {
+      &__icon {
+        @apply bg-red-800 text-white;
+      }
+    }
+  }
+}

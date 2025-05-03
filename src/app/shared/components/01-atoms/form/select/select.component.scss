@@ -1,0 +1,46 @@
+.select {
+  $self: &;
+  @apply relative;
+
+  // -----------------------------
+  // Base
+  // -----------------------------
+  @apply w-full;
+  &__toggle{
+    @apply outline-none w-full b-sm placeholder:text-primary-600 px-12 py-8 transition bg-white border border-primary-600 rounded-md overflow-hidden;
+    &::before {
+      @apply content-[""] absolute z-10 bottom-0 left-1/2 -translate-x-1/2 h-2 w-0 bg-[#0186af] transition-all duration-300;
+    }
+
+    &:focus::before {
+      @apply w-full;
+    }
+  }
+
+  &__label{
+    @apply b-sm mb-6;
+  }
+
+  &__field{
+    @apply w-full;
+  }
+
+  // -----------------------------
+  // Modifiers
+  // -----------------------------
+  &--old {
+    #{$self} {
+      &__toggle {
+        @apply relative focus:shadow-none focus:ring-0 border-b border-b-[#dddddd];
+      }
+
+      &__label {
+        @apply text-[#60737e] text-12 mb-5 font-bold;
+      }
+
+      &__field {
+        @apply p-7 text-12 border-b border-b-[#cccccc];
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<button
+  *ngIf="type=='btn'"
+  [class]="generateButtonClasses()"
+  [disabled]="disabled"
+  (click)="onClick.emit($event)"
+>
+  <ng-content select="[btnContent]"></ng-content>
+</button>
+
+<a
+  *ngIf="type=='link'"
+  [class]="generateButtonClasses()"
+  [routerLink]="formatUrl(url)"
+  [routerLinkActive]="'btn--'+ routerLinkActive"
+>
+  <ng-content select="[linkContent]"></ng-content>
+</a>

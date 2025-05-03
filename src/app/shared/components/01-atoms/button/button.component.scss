@@ -1,0 +1,117 @@
+.btn{
+  $self: &;
+
+  // -----------------------------
+  // Base
+  // -----------------------------
+  @apply whitespace-nowrap h-full transition hover:bg-gray-100 flex items-center justify-center text-16 w-full bg-gray-300 px-12 py-6 bg-transparent;
+
+  // -----------------------------
+  // Modifiers
+  // -----------------------------
+
+  // Simple
+  &--simple{
+    @apply bg-transparent hover:bg-gray-100 rounded-full flex items-center justify-center p-12;
+  }
+
+  // Dropdown
+  &--dropdown{
+    @apply px-8 py-16 gap-x-10 text-gray-900 b-sm-bold hover:no-underline;
+    &-active{
+      @apply bg-gray-100;
+    }
+  }
+
+  // Sidebar
+  &--sidebar{
+    @apply justify-start px-24 py-10 rounded-md text-gray-950 b-sm-semibold gap-x-10;
+    &:hover{
+      @apply no-underline;
+    }
+
+    &-active{
+      @apply bg-indigo-900 text-white hover:bg-indigo-900;
+    }
+  }
+
+  // Main
+  &--main{
+    @apply bg-indigo-900 text-white hover:bg-indigo-800 rounded-md gap-x-12 px-16 py-8;
+    &-light{
+      @apply bg-transparent text-gray-900 rounded-md gap-x-12 px-16 py-8 hover:bg-gray-100;
+    }
+  }
+
+  // Danger
+  &--danger{
+    @apply bg-red-900 text-white hover:bg-red-800 rounded-md gap-x-12 px-16 py-8;
+  }
+
+  // Datatable
+  &--datatable{
+    @apply p-0 rounded-full;
+  }
+
+  // Pagination Navigation Btn
+  &--pagination {
+    &-nav-btn {
+      @apply rounded-lg gap-x-6;
+      &:disabled{
+        @apply opacity-50 hover:bg-transparent cursor-not-allowed;
+      }
+    }
+    &-page{
+      @apply rounded-lg;
+      &-active{
+        @apply text-white bg-indigo-950 hover:bg-indigo-950;
+      }
+    }
+  }
+
+  // Rounded
+  &--rounded{
+    @apply rounded-full p-4;
+  }
+
+  // Icon Only
+  &--icon-only{
+    @apply p-4 rounded-full;
+  }
+
+  // No Style
+  &--no-style{
+    @apply bg-transparent p-0 hover:bg-transparent justify-start;
+  }
+
+  // Disabled
+  &:disabled{
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  // Tab
+  &--tab{
+   @apply b-sm-bold text-gray-950 hover:no-underline px-8 py-16  border-b-2 border-transparent transition hover:bg-indigo-50;
+    &-active{
+      @apply text-indigo-700 border-indigo-700;
+    }
+  }
+
+  // Checkbox
+  &--checkbox{
+    @apply border rounded-md border-gray-300 text-gray-700 b-sm-semibold;
+    &-active{
+      @apply text-indigo-700 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-100;
+    }
+  }
+
+  // Link
+  &--link{
+    @apply b-sm text-indigo-700 hover:underline p-0 hover:bg-transparent justify-start;
+  }
+
+  // Light
+  &--light  {
+    @apply bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border border-indigo-300 rounded-md flex items-center justify-center gap-x-4;
+  }
+}

@@ -1,0 +1,21 @@
+<div [class]="getCheckboxClasses()">
+  <input
+    class="checkbox__field"
+    [id]="id"
+    [type]="type"
+    [name]="name"
+    [value]="value"
+    [checked]="checked"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel"
+    [required]="required"
+    (change)="onCheckboxChange()"
+  />
+  <label class="checkbox__label" [for]="id">
+    <ng-container *ngIf="isHtmlLabel; else plainLabel">
+      <span [innerHTML]="sanitizedLabel"></span>
+    </ng-container>
+    <ng-template #plainLabel>{{ label }}</ng-template>
+  </label>
+</div>
+<span class="input__error" *ngIf="errorMessage">{{ errorMessage }}</span>

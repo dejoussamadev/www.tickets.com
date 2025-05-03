@@ -1,0 +1,4 @@
+<div [class]="getImageClasses()">
+  <img class="aspect-square object-cover" [ngSrc]="safeSrc" [alt]="alt" [width]="width" [height]="height"
+       (load)="imageLoading = false" priority>
+</div>

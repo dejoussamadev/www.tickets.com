@@ -1,0 +1,13 @@
+.image{
+  $self: &;
+
+  @apply overflow-hidden;
+
+  &--avatar{
+    @apply rounded-full;
+  }
+
+  &--sm{
+    @apply w-45;
+  }
+}

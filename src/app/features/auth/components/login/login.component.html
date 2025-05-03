@@ -1,0 +1,26 @@
+<div class="login">
+  <form [formGroup]="loginForm">
+    <shared-input
+      id="email"
+      label="Email"
+      type="email"
+      placeholder="flex.ben.foulen@example.com"
+      formControlName="email"
+      [required]="true"
+      icon="heroEnvelopeSolid"
+    ></shared-input>
+    <shared-input
+      id="password"
+      label="Password"
+      type="password"
+      placeholder="xxxxxxxxxxxx"
+      formControlName="password"
+      [required]="true"
+      icon="heroLockClosedSolid"
+    ></shared-input>
+
+    <shared-button (onClick)="login()" [disabled]="loginForm.valid" [modifiers]="['main']" type="btn">
+      <span btnContent>Login</span>
+    </shared-button>
+  </form>
+</div>

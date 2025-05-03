@@ -1,0 +1,35 @@
+.dropdown{
+  $self: &;
+
+  // -----------------------------
+  // Base
+  // -----------------------------
+
+  @apply relative;
+
+  &__btn {
+  }
+
+  &__content{
+  }
+
+  // Link
+  &__link{
+    @apply b-sm block px-12 py-6 text-sm text-gray-700 hover:no-underline hover:bg-main-100 transition;
+    &--logout{
+      @apply text-red-700 hover:bg-red-100;
+    }
+  }
+
+  // -----------------------------
+  // Modifiers
+  // -----------------------------
+
+  &--datatable{
+    #{$self}{
+      &__content{
+        @apply right-0;
+      }
+    }
+  }
+}
