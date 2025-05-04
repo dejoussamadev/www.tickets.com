@@ -1,0 +1,71 @@
+<div class="profile-details" *ngIf="user">
+  <div class="profile-details__header">
+    <div class="profile-details__avatar">
+      {{ getUserInitials(user) }}
+    </div>
+    <div class="profile-details__title-section">
+      <h1 class="profile-details__title">{{ user.name }}</h1>
+      <span class="profile-details__role-badge" [ngClass]="'profile-details__role-badge--' + user.role.toLowerCase()">
+        {{ user.role }}
+      </span>
+    </div>
+    <div class="profile-details__actions">
+      <shared-button type="link" [modifiers]="['main']" url="/dashboard/users/edit-profile">
+        <span linkContent>
+          <ng-icon name="heroPencilSquareSolid" size="16"></ng-icon>
+        </span>
+        <span linkContent>Edit Profile</span>
+      </shared-button>
+    </div>
+  </div>
+
+  <div class="profile-details__main">
+    <div class="profile-details__info-section">
+      <div class="profile-details__info-card">
+        <div class="profile-details__info-header">User Information</div>
+        <div class="profile-details__info-content">
+          <div class="profile-details__info-row">
+            <span class="profile-details__label">Email:</span>
+            <span class="profile-details__value">{{ user.email }}</span>
+          </div>
+          <div class="profile-details__info-row">
+            <span class="profile-details__label">User ID:</span>
+            <span class="profile-details__value profile-details__id">{{ user._id }}</span>
+          </div>
+          <div class="profile-details__info-row">
+            <span class="profile-details__label">Member Since:</span>
+            <span class="profile-details__value">{{ formatDate(user.createdAt) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-details__stats-section">
+      <div class="profile-details__info-card">
+        <div class="profile-details__info-header">User Activity</div>
+        <div class="profile-details__info-content">
+          <div class="profile-details__stats-row">
+            <div class="profile-details__stat">
+              <div class="profile-details__stat-value">{{ assignedTickets }}</div>
+              <div class="profile-details__stat-label">Assigned Tickets</div>
+            </div>
+            <div class="profile-details__stat">
+              <div class="profile-details__stat-value">{{ createdTickets }}</div>
+              <div class="profile-details__stat-label">Created Tickets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-details__loading" *ngIf="!user && isLoading">
+  <div class="profile-details__spinner"></div>
+  <p>Loading profile information...</p>
+</div>
+
+<div class="profile-details__error" *ngIf="!user && !isLoading && error">
+  <p>{{ error }}</p>
+  <button class="profile-details__button" (click)="loadUserProfile()">Try Again</button>
+</div>

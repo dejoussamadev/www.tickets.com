@@ -1,0 +1,30 @@
+.sidebar {
+  @apply w-full min-w-[14rem] max-w-[14rem] h-screen bg-white p-4 flex flex-col shadow-lg;
+
+  &__menu {
+    @apply list-none p-0 m-0 flex-1;
+
+    &-item {
+      @apply mb-4;
+    }
+
+    &-link {
+      @apply w-full flex items-center no-underline text-gray-800 text-base px-8 py-4 rounded-lg transition-colors duration-300;
+
+      &:hover {
+        @apply bg-indigo-100 text-indigo-500;
+      }
+
+      &--active {
+        @apply text-white bg-indigo-500;
+      }
+      &--danger{
+        @apply hover:bg-red-100 hover:text-red-500 text-red-500;
+      }
+    }
+
+    &-label {
+      @apply whitespace-nowrap ml-6;
+    }
+  }
+}

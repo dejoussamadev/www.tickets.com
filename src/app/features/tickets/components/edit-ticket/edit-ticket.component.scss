@@ -1,0 +1,119 @@
+// edit-ticket.component.scss
+.edit-ticket {
+    @apply flex flex-col bg-white rounded-lg shadow-md m-4 overflow-hidden;
+  
+    &__loading {
+      @apply p-8 text-center text-gray-600 text-base;
+    }
+  
+    &__header {
+      @apply p-5 border-b border-gray-200 bg-gray-50;
+    }
+  
+    &__back {
+      @apply mb-4;
+    }
+  
+    &__back-button {
+      @apply flex items-center bg-transparent border-none text-blue-600 text-sm font-medium cursor-pointer p-0;
+  
+      span {
+        @apply mr-1.5 text-base;
+      }
+  
+      &:hover {
+        @apply text-blue-800 underline;
+      }
+    }
+  
+    &__title {
+      @apply m-0 text-2xl font-semibold text-gray-800;
+    }
+  
+    &__form-container {
+      @apply p-5;
+    }
+  
+    &__form {
+      @apply w-full max-w-3xl mx-auto;
+    }
+  
+    &__success {
+      @apply mb-6;
+    }
+  
+    &__success-content {
+      @apply bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded flex items-center;
+    }
+  
+    &__success-icon {
+      @apply text-green-600 mr-2 text-lg;
+    }
+  
+    &__error {
+      @apply mb-6;
+    }
+  
+    &__error-content {
+      @apply bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded flex items-center;
+    }
+  
+    &__error-icon {
+      @apply text-red-600 mr-2 text-lg;
+    }
+  
+    &__form-group {
+      @apply mb-5;
+    }
+  
+    &__label {
+      @apply block text-sm font-medium text-gray-700 mb-1;
+    }
+  
+    &__input {
+      @apply w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors;
+  
+      &--error {
+        @apply border-red-500 focus:ring-red-500;
+      }
+    }
+  
+    &__textarea {
+      @apply w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-y;
+  
+      &--error {
+        @apply border-red-500 focus:ring-red-500;
+      }
+    }
+  
+    &__select {
+      @apply w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors appearance-none bg-no-repeat;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-size: 1.5em 1.5em;
+  
+      &--error {
+        @apply border-red-500 focus:ring-red-500;
+      }
+    }
+  
+    &__field-error {
+      @apply mt-1 text-xs text-red-600;
+    }
+  
+    &__form-actions {
+      @apply flex justify-end gap-3 mt-8;
+    }
+  
+    &__cancel-button {
+      @apply px-4 py-2 rounded-md text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 hover:bg-gray-200 transition-colors;
+    }
+  
+    &__submit-button {
+      @apply px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 transition-colors;
+  
+      &:disabled {
+        @apply bg-blue-300 border-blue-300 cursor-not-allowed;
+      }
+    }
+  }

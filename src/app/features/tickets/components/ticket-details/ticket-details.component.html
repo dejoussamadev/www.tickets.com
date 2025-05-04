@@ -1,0 +1,137 @@
+<div class="ticket-details" *ngIf="!isLoading && ticket; else loadingTemplate">
+  <div class="ticket-details__header">
+    <div class="ticket-details__back">
+      <button class="ticket-details__back-button" (click)="goBack()">
+        <span>←</span> Back to tickets
+      </button>
+    </div>
+    <div class="ticket-details__title-row">
+      <h2 class="ticket-details__title">{{ ticket.title }}</h2>
+      <div class="ticket-details__badges">
+        <span class="ticket-details__priority" [ngClass]="'ticket-details__priority--' + ticket.priority.toLowerCase()">
+          {{ ticket.priority }}
+        </span>
+        <span class="ticket-details__status" [ngClass]="'ticket-details__status--' + ticket.status.toLowerCase()">
+          {{ ticket.status }}
+        </span>
+      </div>
+    </div>
+    <div class="ticket-details__meta">
+      <div class="ticket-details__meta-item">
+        <span class="ticket-details__label">Created:</span>
+        <span class="ticket-details__value">{{ formatDate(ticket.createdAt) }}</span>
+      </div>
+      <div class="ticket-details__meta-item">
+        <span class="ticket-details__label">Updated:</span>
+        <span class="ticket-details__value">{{ formatDate(ticket.updatedAt) }}</span>
+      </div>
+      <div class="ticket-details__meta-item">
+        <span class="ticket-details__label">Category:</span>
+        <span class="ticket-details__value">{{ ticket.category }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticket-details__body">
+    <div class="ticket-details__section">
+      <h3 class="ticket-details__section-title">Description</h3>
+      <p class="ticket-details__description">{{ ticket.description }}</p>
+    </div>
+
+    <div class="ticket-details__section">
+      <h3 class="ticket-details__section-title">People</h3>
+      <div class="ticket-details__people">
+        <div class="ticket-details__person">
+          <span class="ticket-details__label">Created by:</span>
+          <div class="ticket-details__user">
+            <div class="ticket-details__avatar">
+              {{ ticket.owner.name|slice:0:2 }}
+            </div>
+            <span class="ticket-details__username">{{ ticket.owner.name }}</span>
+          </div>
+        </div>
+
+        <div class="ticket-details__person" *ngIf="ticket.assignedTo">
+          <span class="ticket-details__label">Assigned to:</span>
+          <div class="ticket-details__user">
+            <div class="ticket-details__avatar">
+              {{ ticket.assignedTo.name|slice:0:2 }}
+            </div>
+            <span class="ticket-details__username">{{ ticket.assignedTo.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-details__section">
+      <div class="ticket-details__actions">
+        <shared-button type="link" [url]="['/dashboard/tickets/edit-ticket', ticket._id]" [modifiers]="['light','sm']">
+          <span linkContent class="flex">
+            <ng-icon name="heroPencilSquareSolid" size="16"></ng-icon>
+          </span>
+          <span linkContent>Edit Ticket</span>
+        </shared-button>
+      </div>
+    </div>
+
+    <div class="ticket-details__section ticket-details__comments">
+      <h3 class="ticket-details__section-title">Comments ({{ ticket.comments.length || 0 }})</h3>
+
+      <div class="comments-list" *ngIf="ticket.comments && ticket.comments.length > 0">
+        <div class="comment-item" *ngFor="let comment of ticket.comments">
+
+          <div class="comment-item__header">
+            <div class="ticket-details__user">
+              <div class="ticket-details__avatar">
+                {{ comment.userId.name|slice:0:2 }}
+              </div>
+              <div class="comment-item__user-info ml-6">
+                <span class="ticket-details__username">{{ comment.userId.name }}</span>
+                <span class="comment-item__date">{{ formatDate(comment.createdAt) }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-item__content mt-6">
+            <p>{{ comment.content }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comments-empty" *ngIf="!ticket.comments || ticket.comments.length === 0">
+        <p>No comments yet. Be the first to add a comment!</p>
+      </div>
+
+      <div class="comment-form">
+        <h4 class="comment-form__title">Add a comment</h4>
+        <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+          <div class="comment-form__field">
+            <textarea
+              class="comment-form__textarea"
+              formControlName="content"
+              rows="4"
+              placeholder="Write your comment here..."></textarea>
+            <div class="comment-form__error" *ngIf="commentForm.get('content')?.invalid && commentForm.get('content')?.touched">
+              Comment must be at least 3 characters long.
+            </div>
+          </div>
+          <div class="comment-form__actions">
+            <shared-button (onClick)="addComment()" [disabled]="commentForm.invalid" [modifiers]="['main']">
+              <span btnContent class="flex">
+                <ng-icon name="heroPaperAirplane" size="24"></ng-icon>
+              </span>
+              <span btnContent>
+                Add Comment
+              </span>
+            </shared-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="ticket-details__loading">
+    <p>Loading ticket details...</p>
+  </div>
+</ng-template>

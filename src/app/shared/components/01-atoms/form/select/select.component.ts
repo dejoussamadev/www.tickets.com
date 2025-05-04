@@ -23,7 +23,7 @@ import {SelectOptionType} from '../../../../types';
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
-  @Input() options: SelectOptionType | Signal<SelectOptionType> = [];
+  @Input() options: SelectOptionType = [];
   @Input() placeholder: string = 'Select an option';
   @Input() name?: string;
   @Input() label?: string;
@@ -61,13 +61,13 @@ export class SelectComponent implements ControlValueAccessor {
   writeValue(value: any): void {
     this.selectedValue = value;
     // Determine the options array based on whether `this.options` is a signal or a plain array.
-    let optionsArray: SelectOptionType;
-    if (typeof this.options === 'function') {
+    let optionsArray: SelectOptionType = this.options;
+    /*if (typeof this.options === 'function') {
       // Assuming signals are implemented as functions.
       optionsArray = (this.options as () => { label: string; value: any }[])();
     } else {
       optionsArray = this.options;
-    }
+    }*/
     const selectedOption = optionsArray.find((opt) => opt.value === value);
     this.selectedLabel = selectedOption ? selectedOption.label : null;
   }
@@ -89,10 +89,12 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   get resolvedOptions(): { label: string; value: any }[] {
+    return this.options;
     // Check if options is a function (i.e. a signal)
-    return typeof this.options === 'function'
+    /*return typeof this.options === 'function'
       ? (this.options as () => { label: string; value: any }[])()
       : this.options;
+     */
   }
 
   @HostListener('document:click', ['$event'])

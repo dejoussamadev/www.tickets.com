@@ -1,1 +1,53 @@
-<p>register works!</p>
+<div class="login items-center flex h-screen">
+  <div class="h-screen">
+    <img src="assets/images/login-cover.jpg" class="object-cover h-full" alt="">
+  </div>
+  <div class="flex flex-col items-center justify-center w-full max-w-xl px-24">
+    <h1 class="text-5xl mb-24 font-bold text-indigo-800">Register</h1>
+    <form [formGroup]="registerForm" class="space-y-24 w-full">
+      <div class="space-y-12">
+        <div class="">
+          <shared-input
+            id="name"
+            label="Full name"
+            type="text"
+            placeholder="Flen Ben Foulen"
+            formControlName="name"
+            [required]="true"
+            icon="heroUserSolid"
+          ></shared-input>
+        </div>
+        <div class="">
+          <shared-input
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="flex.ben.foulen@example.com"
+            formControlName="email"
+            [required]="true"
+            icon="heroEnvelopeSolid"
+          ></shared-input>
+        </div>
+        <div class="">
+          <shared-input
+            id="password"
+            label="Password"
+            type="password"
+            placeholder="xxxxxxxxxxxx"
+            formControlName="password"
+            [required]="true"
+            icon="heroLockClosedSolid"
+          ></shared-input>
+        </div>
+      </div>
+
+      <div class="">
+        <shared-button (onClick)="register()" [disabled]="!registerForm.valid" [modifiers]="['main']" type="btn">
+          <span btnContent>Register</span>
+        </shared-button>
+        <p class=" mt-6 text-center text-gray-800">Already have an account? <a routerLink="/login" class="text-indigo-600 hover:underline font-semibold">Login.</a></p>
+      </div>
+    </form>
+  </div>
+
+</div>

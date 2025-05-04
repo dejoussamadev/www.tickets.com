@@ -1,0 +1,42 @@
+<div class="edit-profile" *ngIf="!isLoading">
+  <h1 class="edit-profile__title">Edit Profile</h1>
+
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()" class="edit-profile__form">
+    <div class="edit-profile__form-group">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" type="text" class="edit-profile__input" />
+      <div *ngIf="editProfileForm.get('name')?.invalid && editProfileForm.get('name')?.touched" class="edit-profile__error">
+        Name is required and must be at least 3 characters.
+      </div>
+    </div>
+
+    <div class="edit-profile__form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" class="edit-profile__input" />
+      <div *ngIf="editProfileForm.get('email')?.invalid && editProfileForm.get('email')?.touched" class="edit-profile__error">
+        A valid email is required.
+      </div>
+    </div>
+
+    <div class="edit-profile__form-group">
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" class="edit-profile__input" />
+      <div *ngIf="editProfileForm.get('password')?.invalid && editProfileForm.get('password')?.touched" class="edit-profile__error">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <div class="edit-profile__actions">
+      <button type="submit" class="edit-profile__button" [disabled]="editProfileForm.invalid">Save Changes</button>
+      <button type="button" class="edit-profile__button edit-profile__button--cancel" (click)="router.navigate(['/dashboard/users/profile-details'])">Cancel</button>
+    </div>
+  </form>
+
+  <div *ngIf="error" class="edit-profile__error-message">
+    {{ error }}
+  </div>
+</div>
+
+<div class="edit-profile__loading" *ngIf="isLoading">
+  <p>Loading...</p>
+</div>

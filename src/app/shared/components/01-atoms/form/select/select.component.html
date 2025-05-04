@@ -1,25 +1,24 @@
 <div [class]="getSelectClasses()">
-  <label [for]="id" *ngIf="label">{{label}}</label>
+  <label class="select__label" [for]="id" *ngIf="label">{{label}}</label>
   <div class="select__field">
     <!-- Trigger -->
     <button
       type="button"
       [class]="dropdownOpen ? 'select-toggle--active' : ''"
       class="select__toggle whitespace-nowrap overflow-x-hidden w-full  pl-4 pr-20 py-2 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-      (click)="toggleDropdown()"
-    >
-      {{ selectedLabel || placeholder }}
+      (click)="toggleDropdown()">
+      <span class="block overflow-hidden">{{ selectedLabel || placeholder }}</span>
       <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-        <ng-icon name="heroChevronDown" size="16"></ng-icon>
+        <ng-icon name="heroChevronDownSolid" size="16"></ng-icon>
       </span>
     </button>
 
     <!-- Dropdown -->
     <ul
       *ngIf="dropdownOpen"
-      class="select__dropdown absolute z-10 mt-6 w-full bg-white shadow-lg max-h-120 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none"
+      class="select__dropdown"
     >
-      <cdk-virtual-scroll-viewport itemSize="27" style="height: 100px">
+      <cdk-virtual-scroll-viewport [itemSize]="ITEM_HEIGHT" [style.height.px]="getViewportHeight()">
         <li
           *cdkVirtualFor="let option of resolvedOptions; templateCacheSize: 1"
           (click)="selectOption(option)"

@@ -1,0 +1,18 @@
+<div class="sidebar">
+  <ul class="sidebar__menu">
+    <li *ngFor="let item of menuItems" class="sidebar__menu-item">
+      <a [routerLink]="item.link" routerLinkActive="sidebar__menu-link--active" class="sidebar__menu-link">
+        <span class="sidebar__menu-icon">
+          <ng-icon [name]="item.icon" size="24"></ng-icon>
+        </span>
+        <span class="sidebar__menu-label">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+  <button (click)="logout()" class="sidebar__menu-link sidebar__menu-link--danger">
+        <span class="sidebar__menu-icon">
+          <ng-icon name="heroArrowRightEndOnRectangleSolid" size="24"></ng-icon>
+        </span>
+    <span class="sidebar__menu-label">Logout</span>
+  </button>
+</div>

@@ -1,0 +1,82 @@
+.edit-profile {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  &__error {
+    font-size: 12px;
+    color: #ef4444;
+    margin-top: 4px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+
+    &--cancel {
+      background-color: #e2e8f0;
+      color: #1e293b;
+
+      &:hover {
+        background-color: #cbd5e1;
+      }
+    }
+
+    &:not(&--cancel) {
+      background-color: #6366f1;
+      color: white;
+
+      &:hover {
+        background-color: #4f46e5;
+      }
+    }
+  }
+
+  &__error-message {
+    color: #ef4444;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  &__loading {
+    text-align: center;
+    font-size: 16px;
+    color: #64748b;
+  }
+}

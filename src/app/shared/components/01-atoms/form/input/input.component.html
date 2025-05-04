@@ -2,11 +2,11 @@
   <label class="input__label" *ngIf="label" [for]="id">{{ label }}</label>
   <div class="input__wrapper">
     <span class="input__icon mt-2" [ngClass]="{'pl-12': icon}" *ngIf="icon != ''">
-      <ng-icon [name]="icon" size="20"></ng-icon>
+      <ng-icon [name]="icon" size="24"></ng-icon>
     </span>
     <input
       class="input__field"
-      [ngClass]="{'!pl-42': icon}"
+      [ngClass]="{'!pl-36': icon}"
       [id]="id"
       [type]="isPasswordVisible ? 'text' : type"
       [placeholder]="placeholder"
@@ -24,8 +24,8 @@
       class="input__toggle"
       (click)="togglePasswordVisibility()"
     >
-      <ng-icon *ngIf="isPasswordVisible" size="24" name="heroEyeSlash"></ng-icon>
-      <ng-icon *ngIf="!isPasswordVisible" size="24" name="heroEye"></ng-icon>
+      <ng-icon *ngIf="isPasswordVisible" size="24" name="heroEyeSlashSolid"></ng-icon>
+      <ng-icon *ngIf="!isPasswordVisible" size="24" name="heroEyeSolid"></ng-icon>
     </button>
   </div>
   <span class="input__error" *ngIf="errorMessage">{{ errorMessage }}</span>

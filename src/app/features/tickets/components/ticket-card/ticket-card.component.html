@@ -1,0 +1,32 @@
+<div class="ticket-card">
+  <div class="ticket-card__header">
+    <h3 class="ticket-card__title">{{ ticket.title }}</h3>
+    <span class="ticket-card__priority" [ngClass]="'ticket-card__priority--' + ticket.priority.toLowerCase()">
+      {{ ticket.priority }}
+    </span>
+  </div>
+
+  <div class="ticket-card__body">
+    <p class="ticket-card__description">{{ ticket.description }}</p>
+    <div class="ticket-card__category">
+      <span class="ticket-card__label">Category:</span>
+      <span class="ticket-card__value">{{ ticket.category }}</span>
+    </div>
+  </div>
+
+  <div class="ticket-card__footer">
+    <div class="ticket-card__assigned" *ngIf="ticket.assignedTo">
+      <span class="ticket-card__label">Assigned to:</span>
+      <div class="ticket-card__user">
+        <div class="ticket-card__avatar">
+          {{ ticket.assignedTo.name|slice:0:2 }}
+        </div>
+        <span class="ticket-card__username">{{ ticket.assignedTo.name }} {{ ticket.assignedTo.name }}</span>
+      </div>
+    </div>
+    <div class="ticket-card__actions">
+      <button class="ticket-card__button" (click)="viewDetails()">View</button>
+      <button class="ticket-card__button" (click)="editTicket()">Edit</button>
+    </div>
+  </div>
+</div>

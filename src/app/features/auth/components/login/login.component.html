@@ -1,26 +1,41 @@
-<div class="login">
-  <form [formGroup]="loginForm">
-    <shared-input
-      id="email"
-      label="Email"
-      type="email"
-      placeholder="flex.ben.foulen@example.com"
-      formControlName="email"
-      [required]="true"
-      icon="heroEnvelopeSolid"
-    ></shared-input>
-    <shared-input
-      id="password"
-      label="Password"
-      type="password"
-      placeholder="xxxxxxxxxxxx"
-      formControlName="password"
-      [required]="true"
-      icon="heroLockClosedSolid"
-    ></shared-input>
+<div class="login items-center flex h-screen">
+  <div class="flex flex-col items-center justify-center w-full max-w-xl px-24">
+    <h1 class="text-5xl mb-24 font-bold text-indigo-800">Login</h1>
+    <form [formGroup]="loginForm" class="space-y-24 w-full">
+      <div class="space-y-12">
+        <div class="">
+          <shared-input
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="flex.ben.foulen@example.com"
+            formControlName="email"
+            [required]="true"
+            icon="heroEnvelopeSolid"
+          ></shared-input>
+        </div>
+        <div class="">
+          <shared-input
+            id="password"
+            label="Password"
+            type="password"
+            placeholder="xxxxxxxxxxxx"
+            formControlName="password"
+            [required]="true"
+            icon="heroLockClosedSolid"
+          ></shared-input>
+        </div>
+      </div>
 
-    <shared-button (onClick)="login()" [disabled]="loginForm.valid" [modifiers]="['main']" type="btn">
-      <span btnContent>Login</span>
-    </shared-button>
-  </form>
+      <div class="">
+        <shared-button (onClick)="login()" [disabled]="!loginForm.valid" [modifiers]="['main']" type="btn">
+          <span btnContent>Login</span>
+        </shared-button>
+        <p class=" mt-6 text-center text-gray-800">Don't have an account? <a routerLink="/register" class="text-indigo-600 hover:underline font-semibold">Register.</a></p>
+      </div>
+    </form>
+  </div>
+  <div class="h-screen">
+    <img src="assets/images/login-cover.jpg" class="object-cover h-full" alt="">
+  </div>
 </div>

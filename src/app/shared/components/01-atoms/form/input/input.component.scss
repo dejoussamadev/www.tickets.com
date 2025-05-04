@@ -9,12 +9,12 @@
   &:focus-within{
     #{$self} {
       &__icon {
-        @apply text-main-400;
+        @apply text-indigo-400;
       }
 
       &__field {
-        @apply border-main-400 ring-1 ring-main-300;
-        @apply bg-primary-50 ;
+        @apply border-indigo-400 ring-1 ring-indigo-300;
+        @apply bg-gray-50 ;
       }
     }
   }
@@ -26,17 +26,17 @@
 
   // Icon
   &__icon{
-    @apply absolute top-1/2 -translate-y-1/2 left-0;
+    @apply absolute top-1/2 -translate-y-1/2 left-0 text-gray-600;
   }
 
   // Label
   &__label{
-    @apply b-sm mb-6;
+    @apply text-12 mb-6 block font-semibold text-gray-800;
   }
 
   // Field
   &__field{
-    @apply outline-none w-full b-sm placeholder:text-primary-600 px-12 py-8 transition bg-white border border-primary-600 rounded-md overflow-hidden;
+    @apply outline-none w-full text-12 placeholder:text-gray-600 px-12 py-8 transition bg-white border border-gray-600 rounded-md overflow-hidden;
     &:hover{
       @apply bg-white;
     }
@@ -45,33 +45,5 @@
   // Toggle
   &__toggle{
     @apply absolute right-12 top-1/2 -translate-y-1/2;
-  }
-
-  // -----------------------------
-  // Modifiers
-  // -----------------------------
-  &--old{
-    #{$self}{
-      &__wrapper{
-        @apply relative;
-
-        &::before{
-          @apply content-[""] absolute z-10 bottom-0 left-1/2 -translate-x-1/2 h-2 w-0 bg-[#0186af] transition-all duration-300;
-        }
-
-        &:focus-within::before{
-          @apply w-full;
-        }
-      }
-      &__label{
-        @apply text-[#60737e] text-12 mb-5 font-bold;
-      }
-      &__field{
-        @apply  p-7 text-12 border-b border-b-[#cccccc] border-0 bg-transparent rounded-none;
-        &:focus{
-          @apply border-0 ring-0 shadow-none bg-transparent;
-        }
-      }
-    }
   }
 }

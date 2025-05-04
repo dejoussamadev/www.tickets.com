@@ -19,13 +19,13 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        ...addValues(100, 'rem'), // Limit to 100 values
+        ...addValues(200, 'rem'), // Limit to 100 values
       },
       spacing: {
-        ...addValues(100, 'rem'), // Add custom spacing values
+        ...addValues(200, 'rem'), // Add custom spacing values
       },
       lineHeight: {
-        ...addValues(100, 'rem'), // Add custom lineHeight values
+        ...addValues(200, 'rem'), // Add custom lineHeight values
       },
     },
   },

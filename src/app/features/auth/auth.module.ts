@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgIcon} from '@ng-icons/core';
-import {RouterModule} from '@angular/router';
+import {AuthRoutingModule} from './auth-routing.module';
 
 
 
@@ -17,7 +17,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule,
+    AuthRoutingModule,
     ReactiveFormsModule,
     NgIcon,
   ]

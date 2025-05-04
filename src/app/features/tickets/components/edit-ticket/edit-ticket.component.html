@@ -1,0 +1,79 @@
+<!-- edit-ticket.component.html -->
+<div class="edit-ticket" *ngIf="!isLoading && ticket; else loadingTemplate">
+  <div class="edit-ticket__header">
+    <div class="edit-ticket__back">
+      <button class="edit-ticket__back-button" (click)="cancelEdit()">
+        <span>←</span> Back to ticket
+      </button>
+    </div>
+    <h2 class="edit-ticket__title">Edit Ticket</h2>
+  </div>
+
+  <div class="edit-ticket__form-container">
+    <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="edit-ticket__form">
+      <div class="edit-ticket__row">
+        <shared-input
+          label="Title"
+          placeholder="Enter title"
+          type="text"
+          id="title"
+          formControlName="title"
+          [required]="true"
+        ></shared-input>
+      </div>
+      <div class="edit-ticket__row">
+        <shared-input
+          label="Descriptip"
+          placeholder="Type you ticket description here..."
+          type="textarea"
+          id="description"
+          formControlName="description"
+          [required]="true"
+        ></shared-input>
+      </div>
+      <div class="edit-ticket__row">
+        <shared-input
+          label="Category"
+          placeholder="Enter category"
+          id="category"
+          formControlName="category"
+          [required]="true"
+        ></shared-input>
+      </div>
+      <div class="edit-ticket__row">
+        <shared-select
+          label="Priority"
+          placeholder="Select priority"
+          id="priority"
+          formControlName="priority"
+          [options]="priorities"
+          [required]="true"
+        ></shared-select>
+        <shared-select
+          label="Status"
+          placeholder="Select status"
+          id="status"
+          formControlName="status"
+          [options]="statuses"
+          [required]="true"
+        ></shared-select>
+      </div>
+      <div class="edit-ticket__row">
+        <shared-select
+          label="Assign to"
+          placeholder="Select who to assign to"
+          id="assignTo"
+          formControlName="assignTo"
+          [options]="[{ value: 'low', label: 'Low' }, { value: 'medium', label: 'Medium' }, { value: 'high', label: 'High'}]"
+          [required]="true"
+        ></shared-select>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="edit-ticket__loading">
+    <p>Loading ticket information...</p>
+  </div>
+</ng-template>

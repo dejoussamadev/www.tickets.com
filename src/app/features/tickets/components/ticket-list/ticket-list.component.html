@@ -1,0 +1,8 @@
+<div class="tickets-list">
+  <h1 class="text-5xl font-bold mb-24">All Tickets ({{tickets.length}})</h1>
+  <div class="tickets-list__list grid grid-cols-3 gap-12">
+    <div *ngFor="let ticket of tickets" class="ticket-list__item">
+      <tickets-ticket-card [ticket]="ticket"></tickets-ticket-card>
+    </div>
+  </div>
+</div>

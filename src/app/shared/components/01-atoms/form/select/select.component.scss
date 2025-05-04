@@ -1,3 +1,6 @@
+:host{
+  @apply w-full;
+}
 .select {
   $self: &;
   @apply relative;
@@ -7,40 +10,20 @@
   // -----------------------------
   @apply w-full;
   &__toggle{
-    @apply outline-none w-full b-sm placeholder:text-primary-600 px-12 py-8 transition bg-white border border-primary-600 rounded-md overflow-hidden;
-    &::before {
-      @apply content-[""] absolute z-10 bottom-0 left-1/2 -translate-x-1/2 h-2 w-0 bg-[#0186af] transition-all duration-300;
-    }
-
-    &:focus::before {
-      @apply w-full;
-    }
+    @apply relative outline-none w-full text-10 placeholder:text-gray-600 p-12 transition bg-white border border-gray-300 rounded-md overflow-hidden;
+    @apply focus:border-indigo-700 focus:ring-1 ring-indigo-600;
   }
 
   &__label{
-    @apply b-sm mb-6;
+    @apply text-12 font-semibold block mb-6;
   }
 
   &__field{
     @apply w-full;
   }
 
-  // -----------------------------
-  // Modifiers
-  // -----------------------------
-  &--old {
-    #{$self} {
-      &__toggle {
-        @apply relative focus:shadow-none focus:ring-0 border-b border-b-[#dddddd];
-      }
-
-      &__label {
-        @apply text-[#60737e] text-12 mb-5 font-bold;
-      }
-
-      &__field {
-        @apply p-7 text-12 border-b border-b-[#cccccc];
-      }
-    }
+  // Dropdown
+  &__dropdown{
+    @apply absolute z-10 mt-6 w-full bg-white shadow-lg h-auto max-h-120 rounded-md py-1 text-10 ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none;
   }
 }

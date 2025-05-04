@@ -6,11 +6,21 @@ import {CheckboxComponent} from './components/01-atoms/form/checkbox/checkbox.co
 import {InputComponent} from './components/01-atoms/form/input/input.component';
 import {SelectComponent} from './components/01-atoms/form/select/select.component';
 import {NgIconsModule} from '@ng-icons/core';
-import {heroEnvelopeSolid, heroLockClosedSolid} from '@ng-icons/heroicons/solid';
+import {
+  heroArrowRightEndOnRectangleSolid,
+  heroChevronDownSolid,
+  heroEnvelopeSolid,
+  heroEyeSlashSolid,
+  heroEyeSolid,
+  heroLockClosedSolid, heroPencilSquareSolid, heroTicketSolid,
+  heroUserSolid
+} from '@ng-icons/heroicons/solid';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {CdkFixedSizeVirtualScroll, ScrollingModule} from '@angular/cdk/scrolling';
-
+import {DashboardComponent} from './components/05-pages/dashboard/dashboard.component';
+import {SidebarComponent} from './components/03-organisms/sidebar/sidebar.component';
+import {heroPaperAirplane} from '@ng-icons/heroicons/outline';
 
 
 @NgModule({
@@ -20,13 +30,23 @@ import {CdkFixedSizeVirtualScroll, ScrollingModule} from '@angular/cdk/scrolling
     CheckboxComponent,
     InputComponent,
     SelectComponent,
+    SidebarComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NgIconsModule.withIcons({
       heroEnvelopeSolid,
-      heroLockClosedSolid
+      heroLockClosedSolid,
+      heroEyeSlashSolid,
+      heroEyeSolid,
+      heroUserSolid,
+      heroArrowRightEndOnRectangleSolid,
+      heroTicketSolid,
+      heroPencilSquareSolid,
+      heroPaperAirplane,
+      heroChevronDownSolid,
     }),
     RouterLink,
     RouterLinkActive,
@@ -34,6 +54,7 @@ import {CdkFixedSizeVirtualScroll, ScrollingModule} from '@angular/cdk/scrolling
     NgOptimizedImage,
     CdkFixedSizeVirtualScroll,
     ScrollingModule,
+    RouterOutlet,
   ],
   exports: [
     // Components
@@ -42,6 +63,7 @@ import {CdkFixedSizeVirtualScroll, ScrollingModule} from '@angular/cdk/scrolling
     CheckboxComponent,
     InputComponent,
     SelectComponent,
+    DashboardComponent,
 
     // Modules
     ReactiveFormsModule,
